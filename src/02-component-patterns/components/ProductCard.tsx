@@ -18,9 +18,6 @@ export const ProductCard = ({ children, product }: ProductCardProps) => {
     }}>
       <div className={styles.productCard}>
         {children}
-        {/* <ProductImage image='./coffee-mug.png' />
-      <ProductTitle title={product.title} />
-      <ProductButtons counter={counter} increaseBy={increaseBy} /> */}
       </div>
     </Provider>
   );
