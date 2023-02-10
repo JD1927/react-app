@@ -24,7 +24,7 @@ export const ShoppingPage = () => {
           className="bg-dark"
           product={product}>
           <ProductImage />
-          <ProductTitle />
+          <ProductTitle className="text-white"/>
           <ProductButtons />
         </ProductCard>
       </div>
