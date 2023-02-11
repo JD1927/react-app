@@ -15,16 +15,18 @@ export const ShoppingPage = () => {
         display: 'flex',
         flexWrap: 'wrap'
       }}>
-        <ProductCard product={product}>
-          <ProductCard.Image />
-          <ProductCard.Title />
-          <ProductCard.Buttons />
+        <ProductCard
+          className="bg-dark text-white"
+          product={product}>
+          <ProductCard.Image className="custom-image" />
+          <ProductCard.Title className="text-bold" />
+          <ProductCard.Buttons className="custom-buttons" />
         </ProductCard>
         <ProductCard
           className="bg-dark text-white"
           product={product}>
           <ProductImage className="custom-image" />
-          <ProductTitle className="text-bold"/>
+          <ProductTitle className="text-bold" />
           <ProductButtons className="custom-buttons" />
         </ProductCard>
       </div>
