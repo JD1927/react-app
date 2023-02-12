@@ -5,6 +5,11 @@ const product = {
   title: 'Coffee Mug',
   image: './coffee-mug.png'
 };
+const product2 = {
+  id: '2',
+  title: 'Coffee Mug',
+  image: './coffee-mug2.png'
+};
 
 export const ShoppingPage = () => {
   return (
@@ -24,28 +29,12 @@ export const ShoppingPage = () => {
         </ProductCard>
         <ProductCard
           className="bg-dark text-white"
-          product={product}>
+          product={product2}>
           <ProductImage className="custom-image" style={{
             boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)'
           }}/>
           <ProductTitle className="text-bold" />
           <ProductButtons className="custom-buttons" />
-        </ProductCard>
-        <ProductCard
-          style={{
-            backgroundColor: '#70D1F8'
-          }}
-          product={product}>
-          <ProductImage style={{
-            boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)'
-          }}/>
-          <ProductTitle style={{
-            fontWeight: 'bold'
-          }}/>
-          <ProductButtons style={{
-            display: 'flex',
-            justifyContent: 'flex-end'
-          }}/>
         </ProductCard>
       </div>
     </div>
