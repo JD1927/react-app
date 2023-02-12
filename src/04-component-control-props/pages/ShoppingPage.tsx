@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ProductCard, ProductImage, ProductTitle, ProductButtons } from '../components';
 import { Product } from '../interfaces/interfaces';
 import '../styles/custom-styles.css';
@@ -15,7 +16,16 @@ const product2 = {
 
 const products: Product[] = [product1, product2];
 
+interface ProductInCart extends Product {
+  count: number;
+}
+
 export const ShoppingPage = () => {
+
+  const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
+
+  console.log(shoppingCart);
+
   return (
     <div>
       <h1>Shopping Store</h1>
@@ -26,8 +36,8 @@ export const ShoppingPage = () => {
       }}>
         {
           products.map(product => (
-
             <ProductCard
+              key={`${product.title}-${product.id}`}
               className="bg-dark text-white"
               product={product}>
               <ProductImage className="custom-image" style={{
