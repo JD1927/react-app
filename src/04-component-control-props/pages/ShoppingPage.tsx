@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { ProductCard, ProductImage, ProductTitle, ProductButtons } from '../components';
-import { Product } from '../interfaces/interfaces';
+import { OnChangeArgs, Product } from '../interfaces/interfaces';
 import '../styles/custom-styles.css';
 
 const product1 = {
@@ -24,8 +24,8 @@ export const ShoppingPage = () => {
 
   const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
 
-  const onProductCountChange = () => {
-    console.log('onProductCountChange');
+  const onProductCountChange = ({ count, product }: OnChangeArgs) => {
+    console.log({ count, product });
 
   };
 
@@ -42,7 +42,7 @@ export const ShoppingPage = () => {
             <ProductCard
               key={`${product.title}-${product.id}`}
               className="bg-dark text-white"
-              onChange={() => onProductCountChange()}
+              onChange={onProductCountChange}
               product={product}>
               <ProductImage className="custom-image" style={{
                 boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)'
@@ -57,7 +57,6 @@ export const ShoppingPage = () => {
         <ProductCard
           style={{ width: '100px' }}
           className="bg-dark text-white"
-          onChange={() => onProductCountChange()}
           product={product1}>
           <ProductImage className="custom-image" style={{
             boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)'
