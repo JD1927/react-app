@@ -24,7 +24,10 @@ export const ShoppingPage = () => {
 
   const [shoppingCart, setShoppingCart] = useState<{ [key: string]: ProductInCart }>({});
 
-  console.log(shoppingCart);
+  const onProductCountChange = () => {
+    console.log('onProductCountChange');
+
+  };
 
   return (
     <div>
@@ -39,6 +42,7 @@ export const ShoppingPage = () => {
             <ProductCard
               key={`${product.title}-${product.id}`}
               className="bg-dark text-white"
+              onChange={() => onProductCountChange()}
               product={product}>
               <ProductImage className="custom-image" style={{
                 boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)'
@@ -53,6 +57,7 @@ export const ShoppingPage = () => {
         <ProductCard
           style={{ width: '100px' }}
           className="bg-dark text-white"
+          onChange={() => onProductCountChange()}
           product={product1}>
           <ProductImage className="custom-image" style={{
             boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)'
