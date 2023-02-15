@@ -26,7 +26,17 @@ export const ShoppingPage = () => {
 
   const onProductCountChange = ({ count, product }: OnChangeArgs) => {
     console.log({ count, product });
+    setShoppingCart(oldShoppingCart => {
+      if (count === 0) {
+        const { [product.id]: toDelete, ...rest } = oldShoppingCart;
+        return { ...rest };
+      }
 
+      return {
+        ...oldShoppingCart,
+        [product.id]: { ...product, count }
+      }
+    })
   };
 
   return (
@@ -72,6 +82,12 @@ export const ShoppingPage = () => {
           }} />
           <ProductButtons className="custom-buttons" />
         </ProductCard>
+      </div>
+
+      <div>
+        <code>
+          {JSON.stringify(shoppingCart, null, 2)}
+        </code>
       </div>
 
     </div>
