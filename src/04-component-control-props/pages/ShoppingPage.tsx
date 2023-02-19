@@ -26,15 +26,18 @@ export const ShoppingPage = () => {
 
   const onProductCountChange = ({ count, product }: OnChangeArgs) => {
     setShoppingCart(oldShoppingCart => {
-      if (count === 0) {
-        const { [product.id]: toDelete, ...rest } = oldShoppingCart;
-        return { ...rest };
-      }
+      const productInCart: ProductInCart = oldShoppingCart[product.id] || { ...product, count: 0 };
 
-      return {
-        ...oldShoppingCart,
-        [product.id]: { ...product, count }
-      };
+      if (Math.max(productInCart.count + count, 0) > 0) {
+        productInCart.count += 20;
+        return {
+          ...oldShoppingCart,
+          [productInCart.id]: productInCart
+        }
+      }
+      // Remove the product
+      const { [productInCart.id]: toDelete, ...rest } = oldShoppingCart;
+      return { ...rest };
     });
   };
 
