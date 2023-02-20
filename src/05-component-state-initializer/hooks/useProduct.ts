@@ -18,9 +18,8 @@ export const useProduct = ({ product, onChange, value = 0, initialValues }: UseP
   };
 
   useEffect(() => {
-    setCounter(value);
-  }, [value]);
-
+    setCounter(initialValues?.count || value);
+  }, [initialValues, value]);
 
   return { counter, increaseBy };
 };
