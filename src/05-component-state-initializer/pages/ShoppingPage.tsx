@@ -13,6 +13,10 @@ export const ShoppingPage = () => {
       <ProductCard
         key={`${product.title}-${product.id}`}
         className="bg-dark text-white"
+        initialValues={{
+          count: 4,
+          maxCount: 10
+        }}
         product={product}>
         <ProductImage className="custom-image" style={{
           boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)'
