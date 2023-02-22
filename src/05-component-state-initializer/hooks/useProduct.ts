@@ -24,5 +24,5 @@ export const useProduct = ({ product, onChange, value = 0, initialValues }: UseP
     setCounter(initialValues?.count || value);
   }, [initialValues, value]);
 
-  return { counter, increaseBy };
+  return { counter, increaseBy, maxCount: initialValues?.maxCount };
 };
