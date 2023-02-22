@@ -1,5 +1,5 @@
 import { LazyExoticComponent } from 'react';
-import { ShoppingPage } from '../05-component-state-initializer/pages/ShoppingPage';
+import { ShoppingPage } from '../06-npm-deployment/pages/ShoppingPage';
 
 type JSXComponent = () => JSX.Element;
 
