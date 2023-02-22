@@ -8,7 +8,12 @@ interface UseProductArgs {
   initialValues?: InitialValues;
 }
 
-export const useProduct = ({ product, onChange, value = 0, initialValues }: UseProductArgs) => {
+export const useProduct = ({
+  product,
+  onChange,
+  value = 0,
+  initialValues,
+}: UseProductArgs) => {
   const [counter, setCounter] = useState<number>(initialValues?.count || value);
 
   const increaseBy = (value: number) => {
@@ -20,9 +25,19 @@ export const useProduct = ({ product, onChange, value = 0, initialValues }: UseP
     onChange && onChange({ count: newValue, product });
   };
 
+  const reset = () => {
+    setCounter(initialValues?.count || value);
+  };
+
   useEffect(() => {
     setCounter(initialValues?.count || value);
   }, [initialValues, value]);
 
-  return { counter, increaseBy, maxCount: initialValues?.maxCount };
+  return {
+    counter,
+    maxCount: initialValues?.maxCount,
+    isMaxCountReached: counter === initialValues?.maxCount,
+    increaseBy,
+    reset,
+  };
 };

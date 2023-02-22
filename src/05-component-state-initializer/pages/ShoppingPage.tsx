@@ -15,17 +15,18 @@ export const ShoppingPage = () => {
         className="bg-dark text-white"
         initialValues={{
           count: 4,
-          maxCount: 5
+          maxCount: 10
         }}
         product={product}>
         {
-          () => (
+          ({ reset }) => (
             <>
               <ProductImage className="custom-image" style={{
                 boxShadow: '10px 10px 10px rgba(0, 0, 0, 0.2)'
               }} />
               <ProductTitle className="text-bold" />
               <ProductButtons className="custom-buttons" />
+              <button onClick={reset}>RESET</button>
             </>
           )
         }
