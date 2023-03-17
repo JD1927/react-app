@@ -12,15 +12,15 @@ interface Route {
 
 export const routes: Route[] = [
   {
-    path: '/register',
-    to: '/register',
-    Component: RegisterPage,
-    name: 'Register Page',
-  },
-  {
     path: '/formik-basic',
     to: '/formik-basic',
     Component: FormikBasicPage,
     name: 'Formik Basic Page',
+  },
+  {
+    path: '/register',
+    to: '/register',
+    Component: RegisterPage,
+    name: 'Register Page',
   },
 ];
