@@ -10,13 +10,11 @@ interface FormValues {
 
 export const FormikYupPage = () => {
   const {
-    values,
     errors,
     touched,
     handleSubmit,
-    handleChange,
-    handleBlur,
-  } = useFormik({
+    getFieldProps,
+  } = useFormik<FormValues>({
     initialValues: {
       firstName: '',
       lastName: '',
@@ -47,28 +45,19 @@ export const FormikYupPage = () => {
         <label htmlFor="firstName">First name</label>
         <input
           type="text"
-          name="firstName"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={values.firstName}
+          {...getFieldProps('firstName')}
         />
         {touched.firstName && errors.firstName && <span>{errors.firstName}</span>}
         <label htmlFor="lastName">Last name</label>
         <input
           type="text"
-          name="lastName"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={values.lastName}
+          {...getFieldProps('lastName')}
         />
         {touched.lastName && errors.lastName && <span>{errors.lastName}</span>}
         <label htmlFor="email">Email</label>
         <input
           type="email"
-          name="email"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={values.email}
+          {...getFieldProps('email')}
         />
         {touched.email && errors.email && <span>{errors.email}</span>}
         <button type="submit">SUBMIT</button>
