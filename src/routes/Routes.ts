@@ -1,6 +1,11 @@
 import { LazyExoticComponent } from 'react';
-import { FormikBasicPage, RegisterPage, FormikYupPage } from '../07-formik-react-forms/pages';
-import { FormikComponentsPage } from '../07-formik-react-forms/pages/FormikComponents';
+import {
+  FormikBasicPage,
+  RegisterPage,
+  FormikYupPage,
+  FormikComponentsPage,
+  FormikAbstrictionPage
+} from '../07-formik-react-forms/pages';
 
 type JSXComponent = () => JSX.Element;
 
@@ -29,6 +34,12 @@ export const routes: Route[] = [
     to: '/formik-components',
     Component: FormikComponentsPage,
     name: 'Formik Components Page',
+  },
+  {
+    path: '/formik-abstriction',
+    to: '/formik-abstriction',
+    Component: FormikAbstrictionPage,
+    name: 'Formik Abstriction Page',
   },
   {
     path: '/register',
