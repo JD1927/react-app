@@ -6,3 +6,4 @@ export { FormikBasicPage } from './FormikBasicPage';
 export { FormikYupPage } from './FormikYupPage';
 export { FormikComponentsPage } from './FormikComponents';
 export { FormikAbstrictionPage } from './FormikAbstriction';
+export { RegisterFormikPage } from './RegisterFormikPage';

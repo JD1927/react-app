@@ -4,7 +4,8 @@ import {
   RegisterPage,
   FormikYupPage,
   FormikComponentsPage,
-  FormikAbstrictionPage
+  FormikAbstrictionPage,
+  RegisterFormikPage
 } from '../07-formik-react-forms/pages';
 
 type JSXComponent = () => JSX.Element;
@@ -40,6 +41,12 @@ export const routes: Route[] = [
     to: '/formik-abstriction',
     Component: FormikAbstrictionPage,
     name: 'Formik Abstriction Page',
+  },
+  {
+    path: '/register-formik',
+    to: '/register-formik',
+    Component: RegisterFormikPage,
+    name: 'Register Formik Page',
   },
   {
     path: '/register',
