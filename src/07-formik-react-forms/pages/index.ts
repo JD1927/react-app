@@ -7,3 +7,4 @@ export { FormikYupPage } from './FormikYupPage';
 export { FormikComponentsPage } from './FormikComponents';
 export { FormikAbstrictionPage } from './FormikAbstriction';
 export { RegisterFormikPage } from './RegisterFormikPage';
+export { DynamicFormPage } from './DynamicFormPage';
