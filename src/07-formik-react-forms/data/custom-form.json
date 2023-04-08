@@ -12,5 +12,12 @@
     "placeholder": "Doe",
     "label": "Last name",
     "value": ""
+  },
+  {
+    "type": "email",
+    "name": "email",
+    "placeholder": "john_doe@domain.com",
+    "label": "Email",
+    "value": ""
   }
 ]
