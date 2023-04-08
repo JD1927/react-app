@@ -4,21 +4,39 @@
     "name": "firstName",
     "placeholder": "John",
     "label": "First name",
-    "value": ""
+    "value": "",
+    "validations": [
+      {
+        "type": "required",
+        "message": "Field required"
+      }
+    ]
   },
   {
     "type": "input",
     "name": "lastName",
     "placeholder": "Doe",
     "label": "Last name",
-    "value": ""
+    "value": "",
+    "validations": [
+      {
+        "type": "required",
+        "message": "Field required"
+      }
+    ]
   },
   {
     "type": "email",
     "name": "email",
     "placeholder": "john_doe@domain.com",
     "label": "Email",
-    "value": ""
+    "value": "",
+    "validations": [
+      {
+        "type": "required",
+        "message": "Field required"
+      }
+    ]
   },
   {
     "type": "select",
@@ -37,6 +55,12 @@
       {
         "id": 3,
         "label" : "Resident Evil"
+      }
+    ],
+    "validations": [
+      {
+        "type": "required",
+        "message": "Field required"
       }
     ]
   }
