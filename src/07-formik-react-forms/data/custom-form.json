@@ -9,6 +9,11 @@
       {
         "type": "required",
         "message": "Field required"
+      },
+      {
+        "type": "minLength",
+        "value": 5,
+        "message": "Must be at least"
       }
     ]
   },
@@ -35,6 +40,10 @@
       {
         "type": "required",
         "message": "Field required"
+      },
+      {
+        "type": "email",
+        "message": "Invalid email address"
       }
     ]
   },

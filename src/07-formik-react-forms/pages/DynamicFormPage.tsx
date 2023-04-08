@@ -3,8 +3,8 @@ import formJSON from '../data/custom-form.json';
 import { MySelect, MyTextInput } from '../components';
 import * as Yup from 'yup';
 
-const initialValues: { [key: string]: any } = {};
-const requiredFields: { [key: string]: any } = {};
+const initialValues: { [key: string]: any; } = {};
+const requiredFields: { [key: string]: any; } = {};
 
 for (const field of formJSON) {
   initialValues[field.name] = field.value;
@@ -16,6 +16,14 @@ for (const field of formJSON) {
   for (const rule of field.validations) {
     if (rule.type === 'required') {
       schema = schema.required(rule.message);
+    }
+    if (rule.type === 'email') {
+      schema = schema.email(rule.message);
+    }
+    if (rule.type === 'minLength') {
+      schema = schema.min(
+        (rule as any).value || 2, `${rule.message} ${(rule as any).value || 2} characters`
+      );
     }
   }
 
@@ -56,16 +64,16 @@ export const DynamicFormPage = () => {
                         key={name}
                         label={label}
                         name={name}>
-                          <option value="">Select an option</option>
-                          {
-                            options?.map(({ id, label}) => (
-                              <option key={label} value={id}>{label}</option>
-                            ))
-                          }
+                        <option value="">Select an option</option>
+                        {
+                          options?.map(({ id, label }) => (
+                            <option key={label} value={id}>{label}</option>
+                          ))
+                        }
                       </MySelect>
-                    )
+                    );
                   }
-                  throw new Error(`Type: ${type} not supported`)
+                  throw new Error(`Type: ${type} not supported`);
                 })
               }
               <button type="submit">SUBMIT</button>
