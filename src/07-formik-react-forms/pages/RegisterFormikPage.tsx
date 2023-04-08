@@ -1,74 +1,76 @@
-import { FormEvent } from 'react';
-import { useForm } from '../hooks/useForm';
+import { Formik, Form } from 'formik';
+import { MyTextInput } from '../components';
+import * as Yup from 'yup';
 import '../styles/styles.css';
 
 export const RegisterFormikPage = () => {
 
-  const {
-    name,
-    email,
-    password,
-    confirmPassword,
-    formData,
-    onChange,
-    onResetForm,
-    isValidEmail,
-  } = useForm({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-  });
-
-  const onSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log(formData);
-  };
-
   return (
     <div>
       <h1>Register Formik Page</h1>
-      <form noValidate onSubmit={onSubmit}>
-        <input
-          type="text"
-          placeholder="Name"
-          name="name"
-          value={name}
-          onChange={onChange}
-          className={`${ name.trim().length <=0 && 'has-error' }`}
-        />
-        { name.trim().length <=0 && <span>This field is required</span> }
-        <input
-          type="email"
-          placeholder="Email"
-          name="email"
-          value={email}
-          onChange={onChange}
-          className={`${!isValidEmail(email) && 'has-error'}`}
-        />
-        { !isValidEmail(email) && <span>Invalid email</span> }
-        <input
-          type="password"
-          placeholder="Password"
-          name="password"
-          value={password}
-          onChange={onChange}
-        />
-        { password.trim().length <=0 && <span>This field is required</span> }
-        { password.trim().length > 0 && password.trim().length < 6 && <span>Password must be at least 6 characters</span> }
-        <input
-          type="password"
-          placeholder="Confirm your password"
-          name="confirmPassword"
-          value={confirmPassword}
-          onChange={onChange}
-
-        />
-        { confirmPassword.trim().length <=0 && <span>This field is required</span> }
-        { confirmPassword.trim().length > 0 && password !== confirmPassword && <span>Password must match</span> }
-        <button type="submit">CREATE</button>
-        <button type="button" onClick={onResetForm}>RESET FORM</button>
-      </form>
+      <Formik
+        initialValues={{
+          name: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        }}
+        onSubmit={(values) => {
+          console.log(values);
+        }}
+        validationSchema={
+          Yup.object({
+            name: Yup
+              .string()
+              .min(2, 'Must be at least 2 characters')
+              .max(15, 'Must be 15 characters or less')
+              .required('Required'),
+            email: Yup
+              .string()
+              .email('Invalid email address')
+              .required('Required'),
+            password: Yup
+              .string()
+              .min(6, 'Must be at least 6 characters')
+              .required('Required'),
+            confirmPassword: Yup
+              .string()
+              .oneOf([Yup.ref('password')], 'Passwords must match')
+              .required('Required')
+          })
+        }>
+        {
+          ({handleReset}) => (
+            <Form>
+              <MyTextInput
+                label="Name"
+                name="name"
+                placeholder="John Doe"
+              />
+              <MyTextInput
+                label="Email address"
+                name="email"
+                placeholder="john_doe@domain.com"
+                type="email"
+              />
+              <MyTextInput
+                label="Password"
+                name="password"
+                placeholder="******"
+                type="password"
+              />
+              <MyTextInput
+                label="Confirm password"
+                name="confirmPassword"
+                placeholder="******"
+                type="password"
+              />
+              <button type="submit">CREATE</button>
+              <button type="button" onClick={handleReset}>RESET</button>
+            </Form>
+          )
+        }
+      </Formik>
     </div>
   );
 };
